@@ -1,0 +1,1 @@
+These Excel files contain sample data related to the Office Machine database. Whether you want to use them or generate your own data is up to you.
