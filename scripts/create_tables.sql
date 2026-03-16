@@ -5,7 +5,7 @@ USE MovinOn_TeamNo;
 -- Create the Customers table
 CREATE TABLE customers (
     CustID INT PRIMARY KEY,
-    CompanyName VARCHAR(50) NOT NULL,
+    CompanyName VARCHAR(50), -- Can be null for individual customers
     ContactFirst VARCHAR(30) NOT NULL,
     ContactLast VARCHAR(30) NOT NULL,
     Address VARCHAR(40) NOT NULL,
@@ -30,21 +30,23 @@ CREATE TABLE warehouses (
 
 -- Create the Unit Rentals table
 CREATE TABLE unitrentals (
-    UnitID INT PRIMARY KEY,
+    UnitID INT NOT NULL,
     CustID INT NOT NULL, -- FK Customer ID
     WarehouseID VARCHAR(5) NOT NULL, -- FK Warehouse ID
     DateIn DATETIME NOT NULL,
     DateOut DATETIME, -- Date Out - can be NULL if currently rented
+    PRIMARY KEY (CustID, WarehouseID, UnitID), -- Composite primary key
     FOREIGN KEY (CustID) REFERENCES customers(CustID),
     FOREIGN KEY (WarehouseID) REFERENCES warehouses(WarehouseID)
 );
 
 -- Create the Storage Units table
 CREATE TABLE storageunits (
-    UnitID INT PRIMARY KEY,
+    UnitID INT NOT NULL,
     WarehouseID VARCHAR(5) NOT NULL, -- FK Warehouse ID
     UnitSize VARCHAR(10) NOT NULL,
     Rent DECIMAL(19,4) NOT NULL CHECK (Rent >= 0), -- Rent Amount - must be non-negative, default to 0
+    PRIMARY KEY (UnitID, WarehouseID), -- Composite primary key
     FOREIGN KEY (WarehouseID) REFERENCES warehouses(WarehouseID)
 );
 
@@ -95,7 +97,7 @@ CREATE TABLE drivers (
 );
 -- Create the Job Details table
 CREATE TABLE jobdetails (
-    JobID INT NOT NULL, -- FK Job Order ID
+    JobID INT PRIMARY KEY, -- Primary key Job Order ID
     VehicleID VARCHAR(10) NOT NULL, -- FKVehicle ID
     DriverID INT NOT NULL, -- FK Driver ID
     MileageActual INT NOT NULL CHECK (MileageActual >= 0), -- Actual Mileage - must be non-negative
