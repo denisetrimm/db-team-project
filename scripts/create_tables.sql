@@ -126,7 +126,7 @@ CREATE TABLE employees (
     State VARCHAR(2) NOT NULL,
     ZIP VARCHAR(10) NOT NULL,
     PositionID INT NOT NULL, -- FK Position ID
-    Memo LONGTEXT,
+    Memo VARCHAR(MAX),
     Phone VARCHAR(15) NOT NULL,
     Cell VARCHAR(15) NOT NULL, -- Cell Phone Number
     Salary DECIMAL(19,4) NOT NULL CHECK (Salary >= 0), -- Salary - must be non-negative
