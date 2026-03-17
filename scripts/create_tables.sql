@@ -129,10 +129,9 @@ CREATE TABLE employees (
     Memo VARCHAR(MAX),
     Phone VARCHAR(15) NOT NULL,
     Cell VARCHAR(15) NOT NULL, -- Cell Phone Number
-    Salary DECIMAL(19,4) NOT NULL CHECK (Salary >= 0), -- Salary - must be non-negative
-    HourlyRate DECIMAL(19,4) NOT NULL CHECK (HourlyRate >= 0), -- Hourly Rate - must be non-negative
+    Salary DECIMAL(19,4) CHECK (Salary >= 0), -- Salary - must be non-negative
+    HourlyRate DECIMAL(19,4) CHECK (HourlyRate >= 0), -- Hourly Rate - must be non-negative -- In sample data there are empty cells, not null removed
     Review DATETIME,
     FOREIGN KEY (WarehouseID) REFERENCES warehouses(WarehouseID),
     FOREIGN KEY (PositionID) REFERENCES positions(PositionID)
 );
-
