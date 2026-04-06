@@ -9,6 +9,12 @@ This repository contains the **MovinOn_TeamNo** database implementation for Movi
 - **Database:** Microsoft SQL Server (T-SQL)
 - **Database name:** `MovinOn_TeamNo`
 
+## Team
+- Anton Tang (261156269)
+- Denise Trimm (260619643)
+- Alonso Vasconcelos Gallegos	(261133267)
+
+
 ## Script execution order
 
 Run scripts in this order:
