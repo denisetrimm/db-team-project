@@ -22,13 +22,15 @@ Run scripts in this order:
 1. `scripts/create_database.sql` – Create the database
 2. `scripts/create_tables.sql` – Create all tables (per Figure 2.1)
 3. `scripts/import_sample_data.sql` – Insert sample data (positions, warehouses, customers, vehicles, drivers, employees, job orders, job details, storage units, unit rentals)
-4. `scripts/years_of_service_vested.sql` – View: employee years of service and vesting (5+ years)
-5. `scripts/triggers_employee_phone_areacode.sql` – Trigger: validate employee phone/cell area codes for OR, WA, WY
-6. `scripts/views_employee_earnings_age.sql` – View: employee annual earnings (salary or hourly × 2080), years of service, age
-7. `scripts/reports_warehouse_manager_labels.sql` – Procedure: `WarehouseManagerReportLabels` (mailing labels by warehouse)
-8. `scripts/reports_job_revenue.sql` – View + procedure: `JobRevenueReport` (income, driver payment, net income per job and totals)
-9. `scripts/reports_storage_revenue.sql` – View + procedure: `StorageRevenueReport` (storage revenue by warehouse, years rented, totals)
-10. `scripts/faq_objects.sql` – FAQ objects: functions, views, stored procedure for the five additional questions
+4. `scripts/indexing_strategy.sql` – Create indexes on FK and frequently queried columns
+5. `scripts/years_of_service_vested.sql` – View: employee years of service and vesting (5+ years)
+6. `scripts/triggers_employee_phone_areacode.sql` – Trigger: validate employee phone/cell area codes for OR, WA, WY
+7. `scripts/views_employee_earnings_age.sql` – View: employee annual earnings (salary or hourly × 2080), years of service, age
+8. `scripts/reports_warehouse_manager_labels.sql` – Procedure: `WarehouseManagerReportLabels` (mailing labels by warehouse)
+9. `scripts/reports_job_revenue.sql` – View + procedure: `JobRevenueReport` (income, driver payment, net income per job and totals)
+10. `scripts/reports_storage_revenue.sql` – View + procedure: `StorageRevenueReport` (storage revenue by warehouse, years rented, totals)
+11. `scripts/faq_objects.sql` – FAQ objects: functions, views, stored procedure for the five additional questions
+12. `scripts/transaction_example.sql` – Transaction demonstrating atomic job creation with rollback
 
 ## Requirements coverage
 
@@ -54,6 +56,12 @@ Run scripts in this order:
 db-team-project/
 ├── README.md
 ├── LICENSE
+├── Presentation/
+│   ├── SLIDES.md                 – Slide-by-slide presentation content (18 slides)
+│   ├── speaker_notes.md          – Detailed speaker notes with timing
+│   ├── data_dictionary.md        – Full data dictionary (all 10 tables)
+│   ├── erd_relationships.md      – ERD diagram and relationship descriptions
+│   └── normalization.md          – 1NF / 2NF / 3NF analysis
 ├── project-requirements/
 │   ├── MovingOn_Requirements.pdf
 │   └── data-source/
@@ -62,6 +70,7 @@ db-team-project/
     ├── create_database.sql
     ├── create_tables.sql
     ├── import_sample_data.sql
+    ├── indexing_strategy.sql
     ├── years_of_service_vested.sql
     ├── triggers_employee_phone_areacode.sql
     ├── views_employee_earnings_age.sql
@@ -69,6 +78,9 @@ db-team-project/
     ├── reports_job_revenue.sql
     ├── reports_storage_revenue.sql
     ├── faq_objects.sql
+    ├── average_rental_period.sql
+    ├── peak_rental_month.sql
+    ├── transaction_example.sql
     └── test_debug.sql
 ```
 
